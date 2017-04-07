@@ -24,13 +24,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor grayColor];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backAction:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipe];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UISwipeGestureRecognizer
+- (void)backAction:(UISwipeGestureRecognizer*)gesture
+{
+    if (gesture.direction)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
 
 /*
 #pragma mark - Navigation
